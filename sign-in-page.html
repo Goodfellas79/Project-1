@@ -5,7 +5,7 @@
     <title>Page One</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css">-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Firebase Reference -->
@@ -31,53 +31,68 @@
           <form>
 
             <div class="form-group">
-              <label for="name-input">Name</label>
+              <label for="name-input">Name (Required)</label>
               <input class="form-control" id="name-input" type="text">
             </div>
 
             <div class="form-group">
-              <label for="email-input">Email</label>
-              <input class="form-control" id="email-input" type="text">
-            </div>
-
-            <div class="form-group">
-              <label for="home-city-input">Home City</label>
+              <label for="home-city-input">Home City (Required)</label>
               <input class="form-control" id="home-city-input" type="text">
             </div>
 
             <div class="form-group">
-              <label for="phone-input">Phone Number</label>
-              <input class="form-control" id="phone-input" type="text">
-            </div>
-
-            <div class="form-group">
-              <label for="username-input">Username</label>
+              <label for="username-input">Username (Required)</label>
               <input class="form-control" id="username-input" type="text">
             </div>
 
             <div class="form-group">
-              <label for="genre-input">Main Genre</label>
+              <label for="genre-input">Main Genre (Required)</label>
               <input class="form-control" id="genre-input" type="text">
             </div>
 
             <div class="form-group">
-              <label for="songs-input">Favorite Songs</label>
-              <input class="form-control" id="songs-input" type="text">
+              <label for="email-input">Email (Required)</label>
+              <input class="form-control" id="email-input" type="text">
             </div>
 
             <div class="form-group">
-              <label for="bands-input">Favorite Bands</label>
-              <input class="form-control" id="bands-input" type="text">
+              <label for="phone-input">Phone Number</label>
+              <input class="form-control" id="phone-input" type="text" placeholder="(###)###-####">
             </div>
 
             <div class="form-group">
-              <label for="links-input">Links to your work</label>
+              <label for="bands-input1">Favorite Band</label>
+              <input class="form-control" id="bands-input1" type="text">
+            </div>
+
+            <div class="form-group">
+              <label for="bands-input2">2nd Favorite Band</label>
+              <input class="form-control" id="bands-input2" type="text">
+            </div>
+            
+            <div class="form-group">
+              <label for="bands-input3">3rd Favorite Band</label>
+              <input class="form-control" id="bands-input3" type="text">
+            </div>
+
+            <div class="form-group">
+              <label for="songs-input1">Favorite Song</label>
+              <input class="form-control" id="songs-input1" type="text">
+            </div>
+
+            <div class="form-group">
+              <label for="songs-input2">2nd Favorite Song</label>
+              <input class="form-control" id="songs-input2" type="text">
+            </div>
+
+            <div class="form-group">
+              <label for="songs-input3">3rd Favorite Song</label>
+              <input class="form-control" id="songs-input3" type="text">
+            </div>
+
+            <div class="form-group">
+              <label for="links-input">Links To Your Work</label>
               <input class="form-control" id="links-input" type="text">
-            </div>
-
-            <div class="form-group">
-              <label for="songs-input">Favorite Songs</label>
-              <input class="form-control" id="songs-input" type="text">
             </div>
 
             <div class="form-group">
@@ -93,6 +108,6 @@
       </div>
     </div>
     <!-- JavaScript -->
-    <script src="js/logic.js"></script>
+    <script src="js/sign-in-page-logic.js"></script>
   </body>
 </html>
