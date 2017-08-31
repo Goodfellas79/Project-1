@@ -12,10 +12,18 @@ $(document).ready(function() {
   firebase.initializeApp(config);
   var database = firebase.database();
 
+  function validateForm() {
+    var x = document.forms["sign-in-form"]["name"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+  }
+
   $("#add-user-btn").on("click", function(event) {
     event.preventDefault();
+    bootbox.confirm("Are you sure you want to register?", function(result) {
 
-    if(confirm("Are you sure you want to register?") == true) {
       var name = $("#name-input").val().trim();
       var email = $("#email-input").val().trim();
       var homeCity = $("#home-city-input").val().trim();
@@ -50,7 +58,7 @@ $(document).ready(function() {
 
       database.ref("users/").push(newUser);
      
-      alert("User successfully added");
+      bootbox.alert("User successfully added");
       $("#name-input").val("");
       $("#email-input").val("");
       $("#home-city-input").val("");
@@ -65,16 +73,10 @@ $(document).ready(function() {
       $("#songs-input3").val("");
       $("#links-input").val("");
       $("#about-input").val("");
-    } else {
-      return;
-    }
+    
+    });
 
   });
-
-/*database.ref("users/").orderByChild("key").on("child_added", function(data) {
-  console.log(data.val().name);
-});
-*/
 
 var query = firebase.database().ref("users/").orderByKey();
 query.once("value")
