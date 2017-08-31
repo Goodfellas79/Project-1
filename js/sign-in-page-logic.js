@@ -45,10 +45,10 @@ $(document).ready(function() {
         song2: song2,
         song3: song3,
         links: links,
-        abooutYou: aboutYou,
+        abooutYou: aboutYou
       }
 
-      database.ref().push(newUser);
+      database.ref("users/").push(newUser);
      
       alert("User successfully added");
       $("#name-input").val("");
@@ -68,6 +68,7 @@ $(document).ready(function() {
     } else {
       return;
     }
+
   });
 
 });
