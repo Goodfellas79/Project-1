@@ -12,10 +12,4 @@ $(document).ready(function() {
   firebase.initializeApp(config);
   var database = firebase.database();
 
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-	database.ref("KspXYs_kTeFwyz7HFg7").once('value').then(function(snap) {
-	}
-	console.log(snapshot.val().name);
-}
-
 });

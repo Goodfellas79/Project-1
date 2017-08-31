@@ -20,7 +20,7 @@ $(document).ready(function() {
       var email = $("#email-input").val().trim();
       var homeCity = $("#home-city-input").val().trim();
       var phone = $("#phone-input").val().trim();
-      var userName = $("#username-input").val().trim();
+      var userName = $("#user-name-input").val().trim();
       var genre = $("#genre-input").val().trim();
       var band1 = $("#bands-input1").val().trim();
       var band2 = $("#bands-input2").val().trim();
@@ -55,7 +55,7 @@ $(document).ready(function() {
       $("#email-input").val("");
       $("#home-city-input").val("");
       $("#phone-input").val("");
-      $("#username-input").val("");
+      $("#user-name-input").val("");
       $("#genre-input").val("");
       $("#bands-input1").val("");
       $("#bands-input2").val("");
@@ -71,4 +71,22 @@ $(document).ready(function() {
 
   });
 
+/*database.ref("users/").orderByChild("key").on("child_added", function(data) {
+  console.log(data.val().name);
+});
+*/
+
+var query = firebase.database().ref("users/").orderByKey();
+query.once("value")
+  .then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+
+      var key = childSnapshot.key;
+
+      var userName = childSnapshot.val().userName;
+
+      console.log(userName);
+    });
+  });
+  
 });
