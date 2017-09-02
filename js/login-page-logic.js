@@ -13,22 +13,35 @@ $(document).ready(function() {
 
   $("#login-btn").on("click", function(event) {
     event.preventDefault();
+    var userNameInput = $("#user-name-input").val().trim();
+    var emailInput = $("#email-input").val().trim();
+    console.log(emailInput);
+var query = firebase.database().ref("users/");
 
-    var query = firebase.database().ref("users/");
+
+    /*var query = firebase.database().ref("users/");
     query.once("value").then(function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
         var key = childSnapshot.key;
         var email = childSnapshot.val().email;
         var userName = childSnapshot.val().userName;
-        var userNameInput = $("#user-name-input").val().trim();
-        var emailInput = $("#email-input").val().trim();
+        console.log(userName);
+        var dataArray = [];
+        dataArray.push(userName, email);
+        console.log(dataArray);*/
+          
+      
+        
 
-        if(userName == userNameInput && email == emailInput) {
+        
+        
+
+        /*if(dataArray[0] == userNameInput && dataArray[1] == emailInput) {
           window.location.href = "profile-page.html";
           console.log(userName);
         } else {
           return;
-        }
+        }*/
       });
     });
   });

@@ -12,13 +12,13 @@ $(document).ready(function() {
   firebase.initializeApp(config);
   var database = firebase.database();
 
-  function validateForm() {
+  /*function validateForm() {
     var x = document.forms["sign-in-form"]["name"].value;
     if (x == "") {
         alert("Name must be filled out");
         return false;
     }
-  }
+  }*/
 
   $("#add-user-btn").on("click", function(event) {
     event.preventDefault();
