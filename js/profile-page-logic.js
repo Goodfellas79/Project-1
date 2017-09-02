@@ -52,17 +52,15 @@ $(document).ready(function() {
 
   });
 
-
-
   var query = firebase.database().ref("events/").orderByKey();
   query.once("value").then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
 
       var key = childSnapshot.key;
 
-      var event = childSnapshot.val().title;
+      var title = childSnapshot.val().title;
 
-      console.log(event);
+      console.log(title);
     });
   });
 

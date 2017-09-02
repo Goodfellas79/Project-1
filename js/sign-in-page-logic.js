@@ -78,9 +78,8 @@ $(document).ready(function() {
 
   });
 
-var query = firebase.database().ref("users/").orderByKey();
-query.once("value")
-  .then(function(snapshot) {
+  var query = firebase.database().ref("users/").orderByKey();
+  query.once("value").then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
 
       var key = childSnapshot.key;
