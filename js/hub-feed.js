@@ -1,4 +1,4 @@
-$(document).ready(function() {
+//$(document).ready(function() {
 
 var config = {
   apiKey: "AIzaSyAGrEKN1Msn1IQeAs_Ctw4SbM-yX40fGPc",
@@ -8,6 +8,7 @@ var config = {
   storageBucket: "findyourjam-2008f.appspot.com",
   messagingSenderId: "992674752226"
 };
+
 firebase.initializeApp(config);
 var database = firebase.database();
 
@@ -28,13 +29,14 @@ var database = firebase.database();
       var user = childSnapshot.val().user;
       var imageSrc = childSnapshot.val().image;
 
-      console.log("key: " + key);
-      console.log("event: " + event);
-      console.log("location: " + location);
-      console.log("date: " + date);
-      console.log("description: " + description);
-      console.log("link: " + link);
-      console.log("user: " + user);
+      //console.log("key: " + key);
+      //console.log("event: " + event);
+      //console.log("location: " + location);
+      //console.log("date: " + date);
+      //console.log("description: " + description);
+      //console.log("link: " + link);
+      //console.log("user: " + user);
+
       addEvent(key, imageSrc, event, date, description, location, link);
 
   });
@@ -46,18 +48,14 @@ var database = firebase.database();
 var addEvent = function(key,imageSrc, event, date, description, location, link) {
       $("#event").append("<div class='event-medium-container' id='event-container" + key + "'><img class='event-medium-image' id='event-picture" + key + "' src='" + imageSrc + "'><h3 class='event-medium-title' id='event-title" + key + "'>" + event + "</h3><p class='event-medium-description' id='event-description" + key + "'>Description: " + description + "</p><p class='event-medium-date' id='event-date" + key + "'>Date: " + date + "</p><p class='event-medium-location' id='event-location" + key + "'>Location: " + location + "</p><p class='event-medium-link' id='event-link" + key + "'>Check Us Out: " + link +"</p></div>")
 
-      //$("#event-container" + key).data(key
-      //$("#event-title" + key).html(event);
+      $("#event-container" + key).attr("key", key);
+
 };
 
-var loadInitalEvents = function() {
-  for (var i = 0; i < 20; i++) {
-    addEvent(eventID, imageSrc);
-  }
-};
-//var windowTimeout = setTimeout(function(){
-//    addEvent();
-//    }, 1000);
-
-
+$(document.body).on("click", ".event-medium-container", function() {
+    var event = $(this).attr("key");
+    //window.location.href to push the page or reload html?
+    console.log("You clicked on event: " + event);
 });
+
+//});
