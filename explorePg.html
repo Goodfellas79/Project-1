@@ -29,6 +29,12 @@
               <img src="images/green.png" alt="" id="green">
               <img src="images/red.png" alt="" id="red">
               <img src="images/yellow.png" alt="" id="yellow">
+              <button id="button-1" class="btn btn-primary number" value="Rock"><h1>Rock</h1></button>
+            <br><br>
+            <button id="button-2" class="btn btn-primary number" value="Folk"><h1>Folk</h1></button>
+            <br><br>
+            <button id="button-3" class="btn btn-primary number" value="Bluegrass"><h1>Bluegrass</h1></button>
+            <br><br>
             </div>
           </div>
         </div>
@@ -40,12 +46,7 @@
         </div>
 
                 <div class="panel-body">
-            <button id="button-1" class="btn btn-primary number" value="Rock"><h1>Rock</h1></button>
-            <br><br>
-            <button id="button-2" class="btn btn-primary number" value="Folk"><h1>Folk</h1></button>
-            <br><br>
-            <button id="button-3" class="btn btn-primary number" value="Bluegrass"><h1>Bluegrass</h1></button>
-            <br><br>
+            
             <button id="button-plus" class="btn btn-danger operator" value="EDM"><h1>EDM</h1></button>
             <br><br>
             <button id="button-4" class="btn btn-primary number" value="Jazz"><h1>Jazz</h1></button>
@@ -80,55 +81,44 @@
        <script type="text/javascript">
 
 
-     $(document).ready(function() {
-      // Variables
-      var firstNumber = "";
-      var secondNumber = "";
-      var operator = "";
-      var result = 0;
-      var hasNumber = false;
-      var firstNumberComplete = false;
-      var lockButtons = false;
-      // Check if any button is clicked...
-      $(document).on("click", "button", function() {
-        // Checks if it's a number and that its not the end of the calculation ("!lockButtons")
-        if ($(this).hasClass("number") && !lockButtons) {
-          // We'll then set our "hasNumber" variable to true to indicate that we can proceed in selecting an operator.
-          hasNumber = true;
-          // If we haven't received an operator yet...
-          if (firstNumberComplete === false) {
-            // Then grab the number of the value clicked and build a string with it
-            firstNumber += $(this).attr("value");
-            // Print the number to the firstPage
-            console.log(firstNumber);
-            // Print it to the div
-            $("#first-number").html(firstNumber);
-          }
-          // If we have received an operator already...
-          else {
-            // Grab the number of the value clicked and build a string with it
-            secondNumber += $(this).attr("value");
-            // Print the number to the firstPage
-            console.log(secondNumber);
-            // Print it to the div
-            $("#second-number").html(secondNumber);
-          }
-        }
-        // Checks if its an operator (but not "=")
-        if ($(this).hasClass("operator") && hasNumber && !lockButtons) {
-          firstNumberComplete = true;
-          // Set the visual to show the operator's symbol
-          $("#operator").html("<h1>" + $(this).text() + "</h1>");
-          operator = $(this).attr("value");
-        }
+      var key = childSnapshot.key;
+      var event = childSnapshot.val().title;
+      var location = childSnapshot.val().location;
+      var date = childSnapshot.val().date;
+      var description = childSnapshot.val().description;
+      var link = childSnapshot.val().link;
+      var user = childSnapshot.val().user;
+      var imageSrc = childSnapshot.val().image;
 
+      //console.log("key: " + key);
+      //console.log("event: " + event);
+      //console.log("location: " + location);
+      //console.log("date: " + date);
+      //console.log("description: " + description);
+      //console.log("link: " + link);
+      //console.log("user: " + user);
 
+      addEvent(key, imageSrc, event, date, description, location, link);
 
-        
+  });
 
+});
 
+//display events from firebase
 
-    });
+var addEvent = function(key,imageSrc, event, date, description, location, link) {
+      $("#event").append("<div class='event-medium-container' id='event-container" + key + "'><img class='event-medium-image' id='event-picture" + key + "' src='" + imageSrc + "'><h3 class='event-medium-title' id='event-title" + key + "'>" + event + "</h3><p class='event-medium-description' id='event-description" + key + "'>Description: " + description + "</p><p class='event-medium-date' id='event-date" + key + "'>Date: " + date + "</p><p class='event-medium-location' id='event-location" + key + "'>Location: " + location + "</p><p class='event-medium-link' id='event-link" + key + "'>Check Us Out: " + link +"</p></div>")
+
+      $("#event-container" + key).attr("key", key);
+
+};
+
+$(document.body).on("click", ".event-medium-container", function() {
+    var event = $(this).attr("key");
+    //window.location.href to push the page or reload html?
+    console.log("You clicked on event: " + event);
+});
+
 </script>
 </body>
 </html>
