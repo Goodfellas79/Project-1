@@ -17,16 +17,17 @@
 	border-color: blue;
 	border-width: 2px;
 	margin-bottom: 5px;
-	height: 125px;
+	height: 220px;
 }
 
-/*
+
 .event-medium-image {
 	border-style: solid;
 	border-color: blue;
 	border-width: 1px;
+	height: 100%;
+	width: 100%;
 }
-*/
 
 .event-medium-title {
 	text-align: center;
