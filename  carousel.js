@@ -17,4 +17,3 @@ $('.multi-item-carousel .item').each(function(){
   } else {
   	$(this).siblings(':first').children(':first-child').clone().appendTo($(this));
   }
-});
