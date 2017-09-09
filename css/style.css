@@ -1,0 +1,53 @@
+.panel {
+	width: 50%;
+	display: block;
+	margin: 0 auto;
+}
+
+.header {
+	text-align: center;
+}
+
+.header-sub-title {
+	text-align: center;
+}
+
+.event-medium-container {
+	border-style: solid;
+	border-color: blue;
+	border-width: 2px;
+	margin-bottom: 5px;
+	height: 125px;
+}
+
+/*
+.event-medium-image {
+	border-style: solid;
+	border-color: blue;
+	border-width: 1px;
+}
+*/
+
+.event-medium-title {
+	text-align: center;
+}
+
+.event-medium-description {
+	float: left;
+	margin: 5px;
+}
+
+.event-medium-date {
+	float: left;
+	margin: 5px;
+}
+
+.event-medium-location {
+	float: left;
+	margin: 5px;
+}
+
+.event-medium-link {
+	float: left;
+	margin: 5px;
+}

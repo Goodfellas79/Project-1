@@ -12,15 +12,23 @@ $(document).ready(function() {
   firebase.initializeApp(config);
   var database = firebase.database();
 
+  /*function validateForm() {
+    var x = document.forms["sign-in-form"]["name"].value;
+    if (x == "") {
+        alert("Name must be filled out");
+        return false;
+    }
+  }*/
+
   $("#add-user-btn").on("click", function(event) {
     event.preventDefault();
+    bootbox.confirm("Are you sure you want to register?", function(result) {
 
-    if(confirm("Are you sure you want to register?") == true) {
       var name = $("#name-input").val().trim();
       var email = $("#email-input").val().trim();
       var homeCity = $("#home-city-input").val().trim();
       var phone = $("#phone-input").val().trim();
-      var userName = $("#username-input").val().trim();
+      var userName = $("#user-name-input").val().trim();
       var genre = $("#genre-input").val().trim();
       var band1 = $("#bands-input1").val().trim();
       var band2 = $("#bands-input2").val().trim();
@@ -45,17 +53,17 @@ $(document).ready(function() {
         song2: song2,
         song3: song3,
         links: links,
-        abooutYou: aboutYou,
+        abooutYou: aboutYou
       }
 
-      database.ref().push(newUser);
+      database.ref("users/").push(newUser);
      
-      alert("User successfully added");
+      bootbox.alert("User successfully added");
       $("#name-input").val("");
       $("#email-input").val("");
       $("#home-city-input").val("");
       $("#phone-input").val("");
-      $("#username-input").val("");
+      $("#user-name-input").val("");
       $("#genre-input").val("");
       $("#bands-input1").val("");
       $("#bands-input2").val("");
@@ -65,9 +73,22 @@ $(document).ready(function() {
       $("#songs-input3").val("");
       $("#links-input").val("");
       $("#about-input").val("");
-    } else {
-      return;
-    }
+    
+    });
+
   });
 
+var query = firebase.database().ref("users/").orderByKey();
+query.once("value")
+  .then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+
+      var key = childSnapshot.key;
+
+      var userName = childSnapshot.val().userName;
+
+      console.log(userName);
+    });
+  });
+  
 });
