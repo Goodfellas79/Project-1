@@ -11,17 +11,18 @@
 	<!--Bootswatch-->
 	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/yeti/bootstrap.min.css">
 	<!--CSS-->
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!--FontAwesome-->
 	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 	<div class="row">
-		<h2 class="col-md-12 panel" style="text-align:center">Title of Band</h2>
+		<h2 class="col-md-12" style="text-align:center">Title of Band:<span id="bandTitle"></span></h2>
 	</div>
+	<div class="panel">
 	<div class="row">
 		<div class="col-md-2"></div>
-		<h3 class="col-md-8" style="text-align:center">Title of Event:<span class="title"></span></h3>
+		<h3 class="col-md-8" style="text-align:center">Title of Event:<span id="eventTitle"></span></h3>
 		<div class="col-md-2">
 		<p>Share on Social Media</p>
 			<div class="row">
@@ -33,14 +34,36 @@
 			</div>
 		</div>
 	</div>
-		<h3>Date <span class="date"></span> - Time <span class="time"></span></h3>
-		<h3>Location: </h3><span class="location"></span>
-		<h3>Full description:</h3><span class="description"></span>
+	</div>
+
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-1">
+			<i class="fa fa-clock-o" aria-hidden="true" style="font-size:40px"></i>
+		</div>
+		<div class="col-md-6">
+		<h3>Date <span id="date"></span> - Time <span class="time"></span></h3>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+		<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-1">
+				<i class="fa fa-location-arrow" aria-hidden="true" style="font-size:40px"></i>
+			</div>
+			<div class="col-md-6">
+			<h3>Location: </h3><span id="location"></span>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<h3 style="text-align:center">Full description:</h3><span id="description"></span>
 
 
+<!--Firebase-->
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 <!--jQuery-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!--logic.js-->
-<script src="assets/javascript/logic.js"></script>
+<script src="js/full-event-page-logic.js"></script>
 </body>
 </html>
