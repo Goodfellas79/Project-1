@@ -1,0 +1,53 @@
+
+head {
+	display: none;
+}
+body {
+	font-size: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+div,element.style {
+	position: absolute;
+	top: 0px;
+	height: 2302px;
+	width: 1493px;
+}
+div{
+	display: block;
+}
+
+div, element.style{
+	width: 980 px;
+	padding-bottom: 40px;
+}
+.SITE_ROOT{
+	min-height: 100%;
+	position: relative;
+	margin: 0 auto;
+}
+div element.style{
+	width: 980px;
+	position: static;
+	top: 0px;
+	height: 2302 px;
+}
+footer {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	vertical-align: baseline;
+	background:transparent;
+	background-position-x: initial;
+	background-position-y: initial;
+	background-size: initial;
+	background-repeat-x:initial;
+	background-repeat-y:initial;
+	background-attachment: initial;
+	background-origin: initial;
+	background-clip:initial;
+	background-color: transparent; 
+}
+
+
