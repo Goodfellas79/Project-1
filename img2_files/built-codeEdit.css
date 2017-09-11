@@ -1,0 +1,757 @@
+.wix-code-ide .textview {
+	background-color: white;
+	font-family: "Consolas", "Monaco", "Vera Mono", monospace;
+	font-size: 12px;
+	min-width: 50px;
+	min-height: 50px;
+}
+.wix-code-ide .textviewSelection {
+	background: rgb(180, 213, 255);
+}
+.wix-code-ide .textviewContent ::-moz-selection {
+	background: rgb(180, 213, 255);
+}
+.wix-code-ide .textviewContent ::selection {
+	background: rgb(180, 213, 255);
+}
+.wix-code-ide .textviewSelectionUnfocused {
+	background: lightgray;
+}
+.wix-code-ide .textviewSelectionCaret {
+	background: black;
+}
+.wix-code-ide .textviewScroll {
+	padding: 4px 2px 4px 2px;
+}
+.wix-code-ide .textviewContent {
+  cursor: auto;
+}
+.wix-code-ide .textviewLeftRuler {
+	border-right: 1px solid #eaeaea;
+}
+.wix-code-ide .textviewRightRuler {
+	border-left: 1px solid #eaeaea;
+}
+.wix-code-ide .textviewInnerRightRuler {
+	border-left: 1px solid #eaeaea;
+	background-color: white;
+}
+.wix-code-ide .textviewMarginRuler {
+	border-left: 1px solid #eaeaea;
+}
+.wix-code-ide .textviewBlockCursor {
+	background: black;
+	opacity: 0.4;
+}
+.wix-code-ide .ruler {
+}
+.wix-code-ide .ruler.annotations {
+	width: 16px;
+}
+.wix-code-ide .ruler.folding {
+	width: 14px;
+}
+.wix-code-ide .ruler.lines {
+	text-align: right;
+}
+.wix-code-ide .ruler.overview {
+	width: 14px;
+}
+.wix-code-ide .ruler.zoom {
+	width: 100px;
+	height: 100%;
+}
+.wix-code-ide .rulerLines {
+	color: #767676; 
+}
+.wix-code-ide .rulerLines.even
+.rulerLines.odd {
+}
+.wix-code-ide .rulerZoomWindow {
+	background-color: rgba(0, 0, 0, 0.1);
+	margin-left: 1px;
+	border: 1px solid #eee;
+	position: absolute;
+	width: calc(100% - 4px);
+	border-radius: 5px;
+	z-index: 100;
+}
+.wix-code-ide .textviewZoom {
+	font-size: 2px !important;
+	cursor: pointer;
+}
+.wix-code-ide .textviewZoom .textviewContent {
+	cursor: pointer;
+}
+.wix-code-ide .textviewZoom .textviewScroll {
+	padding: 0;
+}
+.wix-code-ide .textviewZoom .punctuation.separator.tab {
+	background-image: none;
+}
+.wix-code-ide .textviewZoom .punctuation.separator.space {
+	background-image: none;
+}
+.wix-code-ide .textviewTooltip {
+	font-family: "Consolas", "Monaco", "Vera Mono", monospace;
+	font-size: 12px;
+	background-color: #325C80; 
+	color: #FAFAFA;
+	padding: 8px;
+	
+	box-sizing: content-box;
+	border-radius: 3px;
+	z-index: 101;
+	position: fixed;
+	overflow: hidden;
+}
+.wix-code-ide .tooltipTheme .textviewScroll {
+	padding: 0;
+}
+.wix-code-ide .tooltipTheme .annotationLine.currentLine {
+	background-color: transparent !important;
+}
+.wix-code-ide .textviewTooltipCodeProjection {
+	border: 1px solid black !important;
+	
+	padding: 0 !important;
+}
+.wix-code-ide .textviewTooltip a {
+	color: #7CC7FF;
+}
+.wix-code-ide .textviewTooltip h3 {
+	-webkit-margin-before: 0; 
+	margin-top: 0;
+}
+.wix-code-ide .textviewTooltip p:first-of-type {
+	-webkit-margin-before: 0; 
+	margin-top: 0;
+	-webkit-margin-after: 0; 
+	margin-bottom: 0;
+}
+.wix-code-ide .textviewTooltip p {
+	word-wrap: break-word;
+}
+.wix-code-ide .textviewTooltip multi_anno {
+	font-style: normal;
+	font-weight: bold;
+}
+.wix-code-ide .textviewTooltip span {
+	vertical-align: baseline;
+}
+.wix-code-ide .textviewTooltip .tooltipRow {
+	display: table-row;
+}
+.wix-code-ide .textviewTooltip .tooltipImage {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 1px;
+}
+.wix-code-ide .textviewTooltip .tooltipTitle {
+	padding-left: 3px;
+	vertical-align: middle;
+}
+.wix-code-ide .textviewTooltip .hoverTooltipTitle {
+	font-weight: normal;
+}
+.wix-code-ide .textviewTooltip .quickFixList { 
+	margin-top: 5px;
+}
+.wix-code-ide .textviewTooltip .commandButton { 
+	border: 1px solid #325C80;
+	background-color: inherit;
+	color: white;
+}
+.wix-code-ide .textviewTooltip .commandButton:not(.dropdownTrigger){ 
+	text-transform: initial; 
+}
+.wix-code-ide .textviewTooltip .commandList > li {
+	margin: 0;
+}
+.wix-code-ide .textviewTooltip .quickfixAllParameter {
+	margin-bottom: 4px;
+	vertical-align: middle;
+	font-weight: normal;
+	font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+}
+.wix-code-ide .textViewTooltipOnFocus {
+	resize: both;
+	overflow: auto;
+}
+.wix-code-ide .textViewTooltipOnHover {
+	overflow: auto;
+}
+
+.wix-code-ide .textViewFind {
+	background-color: #ddd;
+	position: absolute;
+	border: 1px solid #aaa;
+	border-top: 0;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+	padding: 2px;
+	z-index: 100;
+	display: none;
+}
+.wix-code-ide .textViewFind.show {
+	top: 0;
+	right: 40px;
+	transition: top 0.3s ease-out;
+	-ms-transition: top 0.3s ease-out;
+	-moz-transition: top 0.3s ease-out;
+	-webkit-transition: top 0.3s ease-out;
+	-o-transition: top 0.3s ease-out;
+	display: inline-block;
+}
+.wix-code-ide .textViewFindButton {
+	margin-right: 1px;
+	margin-left: 0;
+}
+.wix-code-ide .textViewFindButton:first-child {
+	margin-left: 5px;
+}
+.wix-code-ide .textViewFindButton:last-child {
+	margin-right: 5px;
+}
+.wix-code-ide .textViewFindButton.checked {
+	color: blue;
+	text-decoration: underline;
+}
+.wix-code-ide .textViewReplaceInput {
+}
+.wix-code-ide .textViewFindInput {
+}
+.wix-code-ide .textViewFindCloseButton {
+	width: 16px;
+	height: 16px;
+	border-width: 0;
+	background-color: transparent;
+	vertical-align: baseline;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.wix-code-ide .contentassist {
+	font-size:12px;
+	display: none;
+	background-color: white;
+	position: fixed;
+	top: 100px;
+	left: 100px;
+	z-index:100;
+	cursor: default;
+	min-width: 70px;
+	width: 350px;
+	height: 170px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	white-space: nowrap;
+	border-radius: 5px;
+	box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 10px;
+	line-height: 18px;
+	resize: both;
+}
+.wix-code-ide .contentassist:focus {
+	outline: none;
+}
+.wix-code-ide .contentassist .proposal-emphasis {
+	font-weight: normal;
+}
+.wix-code-ide .contentassist hr{
+	border: 0;
+	height: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+.wix-code-ide .contentassist .proposal-noemphasis-keyword {
+	background-color: aliceblue;
+	color: #CC4C07;
+	font-weight: bold;
+}
+.wix-code-ide .contentassist .proposal-noemphasis {
+	background-color: aliceblue;
+	font-weight: lighter;
+	color: black;
+}
+.wix-code-ide .contentassist .proposal-noemphasis-title-keywords {
+	background-color: aliceblue;
+	color: #717171;  
+}
+.wix-code-ide .contentassist .proposal-noemphasis-title {
+	background-color: aliceblue;
+	color: #717171;  
+	padding-top: 5px;
+}
+.wix-code-ide .contentassist .proposal-default {
+	
+}
+.wix-code-ide .contentassist .proposal-name {
+	font-weight: bold;
+}
+.wix-code-ide .contentassist .selected {
+	background-color: rgb(48, 135, 179); 
+	background: linear-gradient(rgb(60, 150, 190), rgb(30, 120, 160));
+	border-radius: 3px;
+	color: white;
+}
+.wix-code-ide .contentassist .cloneProposal {
+	box-shadow: rgba(0, 0, 0, 0.9) 2px 2px 8px;
+	position: fixed;
+	visibility: visible;
+	z-index: 1000; 
+}
+.wix-code-ide .contentassist .proposalTag {
+	display: inline-block;
+  	line-height: 11px;
+  	height: 10px;
+   	border-radius: 2px;
+	background: #325C80;
+	padding: 2px;
+	margin-right: 3px;
+	text-align: center;
+  	color: white;
+}
+.wix-code-ide .contentassist .iconTagGreen {
+	display: inline-block;
+	font-size: 10px;
+  	font-weight: bold;
+  	line-height: 13px;
+  	height: 12px;
+  	width: 12px;
+   	border-radius: 50%;
+	background: green;
+	padding: 1px;
+	margin-right: 3px;
+	text-align: center;
+  	color: white;
+}
+.wix-code-ide .contentassist>div {
+	padding: 1px 3px 1px 5px;
+}
+.wix-code-ide .cloneWrapper {
+	display: block;
+	height: 0;			
+	overflow: visible;
+	visibility: hidden; 
+	width: 0;			
+	z-index: 1000; 
+}
+.wix-code-ide .contentassist.cloneWrapper:hover {
+	overflow: visible;
+}
+.wix-code-ide .comment {
+	color: #3C802C;
+}
+.wix-code-ide .constant {
+	color: blue;
+}
+.wix-code-ide .entity {
+	color: #3f7f7f;
+}
+.wix-code-ide .invalid {
+	color: red;
+	font-weight: bold;
+}
+.wix-code-ide .keyword {
+	color: #9F4177;
+	font-weight: bold;
+}
+.wix-code-ide .storage {
+	color: #7F0055;
+}
+.wix-code-ide .string {
+	color: #446fbd;
+}
+.wix-code-ide .support {
+	color: #21439c;
+}
+.wix-code-ide .variable {
+	color: #0000c0;
+}
+.wix-code-ide .punctuation.separator.space {
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.wix-code-ide .punctuation.separator.tab {
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.wix-code-ide .comment-block-documentation {
+	color: #00008F;
+}
+.wix-code-ide .constant-character-entity {
+	font-style: normal;
+}
+.wix-code-ide .entity-name-function, .wix-code-ide .entity-name-type {
+	font-weight: bold;
+	color: #67BBB8;
+}
+.wix-code-ide .entity-name-tag {
+	color: #98937B;
+}
+.wix-code-ide .entity-other-attribute-name {
+	color: #3C802C;
+}
+.wix-code-ide .invalid-illegal {
+	color: white;
+	background-color: red;
+}
+.wix-code-ide .invalid-deprecated {
+	text-decoration: line-through;
+}
+.wix-code-ide .keyword-operator {
+	color: #CC4C07;
+	font-weight: bold;
+}
+.wix-code-ide .meta.annotation.currentLine {
+	background-color: #EAF2FE;
+}
+.wix-code-ide .meta.tag {
+	color: #3f7f7f;
+}
+.wix-code-ide .punctuation-definition-comment {
+	color: #3f5fbf;
+}
+.wix-code-ide .punctuation-definition-string {
+	color: blue;
+}
+.wix-code-ide .variable-parameter {
+	color: #D1416F;
+}
+.wix-code-ide .variable-language {
+	color: #7F0055;
+	font-weight: bold;
+}
+.wix-code-ide .cm-meta { color: #00008F; }
+.wix-code-ide .cm-keyword { font-weight: bold; color: #7F0055; }
+.wix-code-ide .cm-atom { color: #21439c; }
+.wix-code-ide .cm-number { color: black; }
+.wix-code-ide .cm-def { color: green; }
+.wix-code-ide .cm-variable { color: black; }
+.wix-code-ide .cm-variable-2 { color: #004080; }
+.wix-code-ide .cm-variable-3 { color: #004080; }
+.wix-code-ide .cm-property { color: black; }
+.wix-code-ide .cm-operator { color: #222; }
+.wix-code-ide .cm-comment { color: green; }
+.wix-code-ide .cm-string { color: blue; }
+.wix-code-ide .cm-error { color: #ff0000; }
+.wix-code-ide .cm-qualifier { color: gray; }
+.wix-code-ide .cm-builtin { color: #7F0055; }
+.wix-code-ide .cm-bracket { color: white; background-color: gray; }
+.wix-code-ide .cm-tag { color: #3f7f7f; }
+.wix-code-ide .cm-attribute { color: #7f007f; }
+
+.wix-code-ide .annotation {
+}
+.wix-code-ide .annotation.error,
+.wix-code-ide .annotation.warning,
+.wix-code-ide .annotation.task,
+.wix-code-ide .annotation.bookmark,
+.wix-code-ide .annotation.breakpoint,
+.wix-code-ide .annotation.collapsed,
+.wix-code-ide .annotation.expanded,
+.wix-code-ide .annotation.currentBracket,
+.wix-code-ide .annotation.matchingBracket,
+.wix-code-ide .annotation.currentLine,
+.wix-code-ide .annotation.matchingSearch,
+.wix-code-ide .annotation.currentSearch,
+.wix-code-ide .annotation.readOccurrence,
+.wix-code-ide .annotation.writeOccurrence,
+.wix-code-ide .annotation.linkedGroup,
+.wix-code-ide .annotation.currentLinkedGroup,
+.wix-code-ide .annotation.selectedLinkedGroup {
+}
+.wix-code-ide .annotation.blame {
+	color: gray;
+	background-color: rgb(255, 132, 44);
+}
+.wix-code-ide .annotation.currentBlame {
+	color: black;
+	background-color: rgb(184, 103, 163);
+}
+.wix-code-ide .annotation.diffAdded {
+	background-repeat: repeat-y;
+	color: #CCCCCC;
+}
+.wix-code-ide .annotation.diffModified {
+	background-repeat: repeat-y;
+	color: #CCCCCC;
+}
+.wix-code-ide .annotation.diffDeleted {
+	background-repeat: repeat-x;
+	color: #CCCCCC;
+}
+.wix-code-ide .lines .annotation.diffAdded {
+	background-image: none;
+	background-color: rgba(159, 202, 86, 0.68);
+	color: #555555;
+}
+.wix-code-ide .lines .annotation.diffModified {
+	background-image: none;
+	background-color: rgba(85, 181, 219, 0.67);
+	color: #555555;
+}
+.wix-code-ide .annotationHTML {
+	cursor: pointer;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.wix-code-ide .annotationHTML.error {
+}
+.wix-code-ide .annotationHTML.warning {
+}
+.wix-code-ide .annotationHTML.task {
+}
+.wix-code-ide .annotationHTML.bookmark {
+}
+.wix-code-ide .annotationHTML.breakpoint {
+}
+.wix-code-ide .annotationHTML.collapsed {
+	
+	width: 14px;
+	height: 14px;
+}
+.wix-code-ide .annotationHTML.expanded {
+	
+	width: 14px;
+	height: 14px;
+}
+.wix-code-ide .annotationHTML.multiple {
+}
+.wix-code-ide .annotationHTML.overlay {
+	background-position: right bottom;
+	position: relative;
+	top: -16px;
+}
+.wix-code-ide .annotationHTML.currentBracket {
+}
+.wix-code-ide .annotationHTML.matchingBracket {
+}
+.wix-code-ide .annotationHTML.currentLine {
+}
+.wix-code-ide .annotationHTML.matchingSearch {
+}
+.wix-code-ide .annotationHTML.currentSearch {
+}
+.wix-code-ide .annotationHTML.readOccurrence {
+}
+.wix-code-ide .annotationHTML.writeOccurrence {
+}
+.wix-code-ide .annotationHTML.blame {
+	float: left;
+}
+.wix-code-ide .annotationHTML.currentBlame {
+	float: left;
+}
+.wix-code-ide .annotationHTML.blame.single {
+	width: 32px;
+	height: 32px;
+}
+.wix-code-ide .annotationHTML.currentBlame.single {
+	width: 32px;
+	height: 32px;
+}
+.wix-code-ide .annotationHTML.diffAdded {
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.wix-code-ide .annotationHTML.diffDeleted {
+	background-repeat: repeat-x;
+	background-position: left top;
+}
+.wix-code-ide .annotationHTML.diffModified {
+	background-repeat: repeat-y;
+	background-position: left top;
+}
+.wix-code-ide .annotationOverview {
+	cursor: pointer;
+	border-radius: 2px;
+	left: 2px;
+	width: 8px;
+}
+.wix-code-ide .annotationOverview.task {
+	background-color: #93bb7a;
+	border: 1px solid #79aa59;
+}
+.wix-code-ide .annotationOverview.breakpoint {
+	background-color: lightblue;
+	border: 1px solid blue;
+}
+.wix-code-ide .annotationOverview.bookmark {
+	background-color: #84b3cf;
+	border: 1px solid #9cc2d8;
+}
+.wix-code-ide .annotationOverview.error {
+	background-color: #EFA1A7;
+	border: 1px solid #ec8a91;
+}
+.wix-code-ide .annotationOverview.warning {
+	background-color: #fce1a9;
+	border: 1px solid #face70;
+}
+.wix-code-ide .annotationOverview.currentBracket {
+	background-color: #00cc00;
+	border: 1px solid #00aa00;
+}
+.wix-code-ide .annotationOverview.matchingBracket {
+	background-color: #00cc00;
+	border: 1px solid #00aa00;
+}
+.wix-code-ide .annotationOverview.currentLine {
+	background-color: #EAF2FE;
+	border: 1px solid black;
+}
+.wix-code-ide .annotationOverview.matchingSearch {
+	background-color: #C3E1FF;
+	border: 1px solid #afcae5;
+}
+.wix-code-ide .annotationOverview.currentSearch {
+	background-color: #53D1FF;
+	border: 1px solid #42a7cc;
+}
+.wix-code-ide .annotationOverview.readOccurrence {
+	background-color: lightgray;
+	border: 1px solid black;
+}
+.wix-code-ide .annotationOverview.writeOccurrence {
+	background-color: Gold;
+	border: 1px solid darkred;
+}
+.wix-code-ide .annotationOverview.currentBlame {
+	background-color: rgb(184, 103, 163);
+	border: 1px solid black;
+}
+.wix-code-ide .annotationOverview.diffAdded {
+	background-color: rgba(159, 202, 86, 0.52);
+	border: 1px solid black;
+}
+.wix-code-ide .annotationOverview.diffDeleted {
+}
+.wix-code-ide .annotationOverview.diffModified {
+	background-color: rgba(85, 181, 219, 0.61);
+	border: 1px solid black;
+}
+.wix-code-ide .annotationRange {
+	background-repeat: repeat-x;
+ 	background-position: left bottom;
+}
+.wix-code-ide .annotationRange.task {
+}
+.wix-code-ide .annotationRange.breakpoint {
+}
+.wix-code-ide .annotationRange.bookmark {
+}
+.wix-code-ide .annotationRange.error {
+}
+.wix-code-ide .annotationRange.warning {
+}
+.wix-code-ide .annotationRange.currentBracket {
+	background-color: #00FE00;
+}
+.wix-code-ide .annotationRange.matchingBracket {
+	background-color: #00FE00;
+}
+.wix-code-ide .annotationRange.readOccurrence {
+	background-color: lightgray;
+}
+.wix-code-ide .annotationRange.writeOccurrence {
+	background-color: yellow;
+}
+.wix-code-ide .annotationRange.matchingSearch {
+	background-color: #C3E1FF;
+}
+.wix-code-ide .annotationRange.currentSearch {
+	background-color: #53D1FF;
+}
+.wix-code-ide .annotationRange.linkedGroup {
+	outline: 1px solid grey;
+}
+.wix-code-ide .annotationRange.currentLinkedGroup {
+	background-color: #C3E1FF;
+}
+.wix-code-ide .annotationRange.selectedLinkedGroup {
+	background-color: #53D1FF;
+}
+.wix-code-ide .annotationLine {
+}
+.wix-code-ide .annotationLine.currentLine {
+	background-color: #EAF2FE;
+}
+
+.wix-code-ide .comment.block.documentation {
+	color: #00008F;
+}
+.wix-code-ide .constant.character.entity {
+	font-style: normal;
+}
+.wix-code-ide .entity.name.function, .wix-code-ide .entity.name.type {
+	font-weight: bold;
+	color: #67BBB8;
+}
+.wix-code-ide .entity.name {
+	color: #98937B;
+}
+.wix-code-ide .entity.other.attribute.name {
+	color: #3C802C;
+}
+.wix-code-ide .meta.documentation.tag {
+	color: #7F7F9F;
+}
+.wix-code-ide .meta.documentation.annotation {
+	color: #7F9FBF;
+}
+.wix-code-ide .meta.preprocessor {
+	color: #A4A4A4;
+}
+.wix-code-ide .markup.bold {
+	font-weight: bold;
+}
+.wix-code-ide .markup.heading, .wix-code-ide .markup-heading {
+	color: blue;
+}
+.wix-code-ide .markup.italic {
+	font-style: italic;
+}
+.wix-code-ide .markup.list {
+	color: #CC4C07;
+}
+.wix-code-ide .markup.other.separator {
+	color: #00008F;
+}
+.wix-code-ide .markup.other.strikethrough {
+	text-decoration: line-through;
+}
+.wix-code-ide .markup.other.table {
+	color: #3C802C;
+}
+.wix-code-ide .markup.quote, .wix-code-ide .markup-quote {
+	color: #446fbd;
+}
+.wix-code-ide .markup.raw {
+	font-family: monospace
+}
+.wix-code-ide markup.raw.html.markdown {
+	background-color: #E4F7EF
+}
+.wix-code-ide .markup.underline.link {
+	text-decoration: underline;
+}
+.wix-code-ide .punctuation.definition.comment {
+	color: #3f5fbf;
+}
+.wix-code-ide .punctuation.definition.string {
+	color: blue;
+}
+.wix-code-ide .variable.parameter {
+	color: #D1416F;
+}
+.wix-code-ide .variable.language {
+	color: #7F0055;
+	font-weight: bold;
+}
+.wix-code-ide .variable.other {
+	color: #E038AD;
+}

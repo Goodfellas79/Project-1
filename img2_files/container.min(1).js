@@ -1,0 +1,2 @@
+"use strict";define("container",["lodash","containerCommon","core"],function(e,i,n){var r={displayName:"WixContainer",mixins:[i.mixins.containerMixin],statics:{useSantaTypes:!0},getSkinProperties:function(){return{inlineContent:{children:this.props.children}}}};return n.compRegistrar.register("wixapps.integration.components.Area",r).register("wysiwyg.viewer.components.VerticalRepeater",r).register("wysiwyg.viewer.components.WSiteStructure",r,!0).register("mobile.core.components.Container",r,!0),r});
+//# sourceMappingURL=container.min.js.map
