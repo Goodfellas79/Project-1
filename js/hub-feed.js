@@ -31,6 +31,7 @@ var query = database.ref("events/").orderByKey();
       var eventDistance = distance(userLon, userLat ,eventLon, eventLat); 
             
       keyArray.push(key);
+      console.log(keyArray);
 
   });
 
@@ -71,12 +72,14 @@ $(document.body).on("click", ".event-medium-container", function() {
 });
 
 var distance = function(userLon, userLat, eventLon, eventLat) {
-  var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + userLon + "," + userLat + "&destinations=" + eventLon + "," + eventLat + "&key=AIzaSyAGrEKN1Msn1IQeAs_Ctw4SbM-yX40fGPc";
+  var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + userLat + "," + userLon + "&destinations=" + eventLat + "," + eventLon + "&key=AIzaSyAGrEKN1Msn1IQeAs_Ctw4SbM-yX40fGPc";
 
   $.ajax({
       url: queryURL,
       method: "GET"
     }).done(function(response) {
+      console.log(response);
+      console.log(queryURL);
       distArray.push(response.rows[0].elements[0].distance.value);
   });
 };
