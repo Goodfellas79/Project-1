@@ -12,7 +12,9 @@ $(document).ready(function() {
   };
   firebase.initializeApp(config);
   var database = firebase.database();
+  var eventsRef = database.ref("events/");
 
+  var userName;
   var title;
   var street;
   var city;
@@ -31,6 +33,45 @@ $(document).ready(function() {
   var distArray = [];
   var sorted;
 
+  var displayInstrument = function(instrument) {
+    var URL = "http://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&q=" + instrument + "&limit=1";
+    $.ajax({
+        url: URL,
+        method: 'GET'
+       }).done(function(response) {
+           console.log(response.data[0].images.fixed_height_small.url);
+           var imageURL = response.data[0].images.fixed_height_small.url;
+           $("#instrument-image1").append("<img src='" + response.data[0].images.fixed_height_small.url + "'>");
+           console.log("<img src='" + response.data[0].images.fixed_height_small.url + "'>");
+       });  
+  };
+  
+
+  var loadProfile = function() {
+    userName = localStorage.getItem("userName");
+    console.log(userName);
+    query = database.ref("users/" + userName);
+    query.once("value").then(function(snapshot) { 
+      console.log(snapshot.val); 
+      $("#name-profile").text(snapshot.val().name);
+      $("#genre-profile").text(snapshot.val().genre);
+      $("#instrument-profile").text(snapshot.val().instrument);
+      $("#homeCity-profile").text(snapshot.val().homeCity);
+      $("#aboutYou-profile").text(snapshot.val().aboutYou);
+      $("#links-profile").text(snapshot.val().links);
+      $("#song1-profile").text(snapshot.val().song1);
+      $("#song2-profile").text(snapshot.val().song2);
+      $("#song3-profile").text(snapshot.val().song3);
+      $("#band1-profile").text(snapshot.val().band1);
+      $("#band2-profile").text(snapshot.val().band2);
+      $("#band3-profile").text(snapshot.val().band3);
+      displayInstrument(snapshot.val().instrument);
+    });
+    
+  };
+
+  loadProfile();
+
   var addNewEvent = function() {
     console.log("hi");
 
@@ -48,7 +89,7 @@ $(document).ready(function() {
       link: link
     };
 
-    database.ref("events/").push(newEvent);
+    eventsRef.push(newEvent);
 
     console.log(newEvent);
 
@@ -116,28 +157,31 @@ $(document).ready(function() {
 
   });
 
-  var query = database.ref("events/").orderByKey();
-  query.once("value").then(function(snapshot) {
-    //console.log(snapshot);
-    snapshot.forEach(function(childSnapshot) {
+  var findDistance = function() {
+    eventsRef.once("value").then(function(snapshot) {
+      //console.log(snapshot);
+      snapshot.forEach(function(childSnapshot) {
 
-      var key = childSnapshot.key;
-      var eventLon = childSnapshot.val().eventLon;
-      var eventLat = childSnapshot.val().eventLat;
-      var userLon = localStorage.getItem("userLon");
-      var userLat = localStorage.getItem("userLat");
+        var key = childSnapshot.key;
+        var eventLon = childSnapshot.val().eventLon;
+        var eventLat = childSnapshot.val().eventLat;
+        var userLon = localStorage.getItem("userLon");
+        var userLat = localStorage.getItem("userLat");
 
-      var eventDistance = distance(userLon, userLat ,eventLon, eventLat); 
-            
-      keyArray.push(key);
+        var eventDistance = distance(userLon, userLat ,eventLon, eventLat); 
+              
+        keyArray.push(key);
+
+      });
 
     });
+  };
 
-  });
+  findDistance();
 
 //display events from firebase db
-  var addEvent = function(key,imageSrc, event, date, description, location, link) {
-    $("#event").append("<div class='row event-medium-container' id='event-container" + key + "'><div class='col-xs-12'><h3 class='event-medium-title' id='event-title" + key + "'>" + event + "</h3></div><div class='col-xs-2'><img class='event-medium-image' id='event-picture" + key + "' src='" + imageSrc + "'></div><div class='col-xs-8'><p class='event-medium-description' id='event-description" + key + "'>Description: " + description + "</p><p class='event-medium-date' id='event-date" + key + "'>Date: " + date + "</p><br><p class='event-medium-location' id='event-location" + key + "'>Location: " + location + "</p><br><a href='" + link + "' class='event-medium-link' id='event-link" + key + "'>Check Us Out</a></div></div>");
+  var addEvent = function(key, event, date, description, street, city, state, zipcode, link) {
+    $("#event").append("<div class='row event-medium-container' id='event-container" + key + "'><div class='col-xs-12'><h3 class='event-medium-title' id='event-title" + key + "'>" + event + "</h3></div><div class='col-xs-2'></div><div class='col-xs-8'><p class='event-medium-description' id='event-description" + key + "'>Description: " + description + "</p><p class='event-medium-date' id='event-date" + key + "'>Date: " + date + "</p><br><p class='event-medium-location' id='event-location" + key + "'>Location: " + street + ", " + city + ", " + state + " " + zipcode + "</p><br><a href='" + link + "' class='event-medium-link' id='event-link" + key + "'>Check Us Out</a></div></div>");
 
     $("#event-container" + key).attr("key", key);
 
@@ -145,20 +189,22 @@ $(document).ready(function() {
 
   var loadSortedEvents = function() {
     for (var i = 0; i < keyArray.length; i++) {
-      var query = database.ref("events/" + keyArray[i]);
-        query.once("value").then(function(snapshot) {
+      query = database.ref("events/" + keyArray[i]);
+      query.once("value").then(function(snapshot) {
 
-          var event = snapshot.val().title;
-          var location = snapshot.val().location;
-          var date = snapshot.val().date;
-          var description = snapshot.val().description;
-          var link = snapshot.val().link;
-          var user = snapshot.val().user;
-          var imageSrc = snapshot.val().imageSRC;
+        var event = snapshot.val().title;
+        var street = snapshot.val().street;
+        var city = snapshot.val().city;
+        var state = snapshot.val().state;
+        var zipcode = snapshot.val().zipcode;
+        var date = snapshot.val().date;
+        var description = snapshot.val().description;
+        var link = snapshot.val().link;
+        var user = snapshot.val().user;
 
-          addEvent(keyArray[i], imageSrc, event, date, description, location, link);
+        addEvent(keyArray[i], event, date, description, street, city, state, zipcode, link);
 
-        });
+      });
     }
   };
 
@@ -170,7 +216,7 @@ $(document).ready(function() {
   });
 
   var distance = function(userLon, userLat, eventLon, eventLat) {
-    var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + userLon + "," + userLat + "&destinations=" + eventLon + "," + eventLat + "&key=AIzaSyAGrEKN1Msn1IQeAs_Ctw4SbM-yX40fGPc";
+    var queryURL = "https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + userLat + "," + userLon + "&destinations=" + eventLat + "," + eventLon + "&key=AIzaSyAGrEKN1Msn1IQeAs_Ctw4SbM-yX40fGPc";
 
     $.ajax({
         url: queryURL,
@@ -208,4 +254,5 @@ $(document).ready(function() {
 
   setTimeout(bubbleCall, 1000 * 4);
   setTimeout(loadSortedEvents, 1000 * 5);
+
 });
